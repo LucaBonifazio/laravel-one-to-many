@@ -20,7 +20,7 @@
                 <tr>
                     <th scope="row">{{ $category->id }}</th>
                     <td>{{ $category->slug }}</td>
-                    <td>{{ $category->title }}</td>
+                    <td>{{ $category->name }}</td>
                     <td>
                         <a href="{{ route('admin.categories.show', ['category' => $category]) }}" class="btn btn-primary">Show</a>
                         <a href="{{ route('admin.categories.edit', ['category' => $category]) }}" class="btn btn-warning">Edit</a>
@@ -33,5 +33,7 @@
 
     {{ $categories->links() }}
 
-    @include('admin.partials.delete_confirmation')
+    @include('admin.partials.delete_confirmation', [
+        'delete_name' => 'category',
+    ])
 @endsection

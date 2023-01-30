@@ -33,5 +33,7 @@
 
     {{ $posts->links() }}
 
-    @include('admin.partials.delete_confirmation')
+    @include('admin.partials.delete_confirmation', [
+        'delete_name' => 'post',
+    ])
 @endsection

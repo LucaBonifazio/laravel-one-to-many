@@ -9,7 +9,11 @@
 
         <ul>
             @foreach ($category->posts as $post)
-                <li><a href="{{ route('admin.posts.show', ['post' => $post]) }}">{{ $post->title }}</a></li>
+                <li>
+                    <a href="{{ route('admin.posts.show', ['post' => $post]) }}">
+                        {{ $post->title }}
+                    </a>
+                </li>
             @endforeach
         </ul>
     </div>

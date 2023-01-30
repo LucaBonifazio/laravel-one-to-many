@@ -57,7 +57,7 @@ class CategoryController extends Controller
 
         $data = $request->all();
 
-        $category = new category;
+        $category = new Category;
         $category->slug             = $data['slug'];
         $category->name             = $data['name'];
         $category->description      = $data['description'];
@@ -69,7 +69,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\category  $category
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
@@ -80,7 +80,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\category  $category
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function edit(Category $category)
@@ -116,7 +116,7 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(category $category)
+    public function destroy(Category $category)
     {
         $category->delete();
 

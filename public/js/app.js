@@ -5082,7 +5082,13 @@ if (eleOverlay) {
   btnsDelete.forEach(function (btn) {
     btn.addEventListener('click', function () {
       eleOverlay.classList.remove('d-none');
-      eleOverlay.querySelector('form').setAttribute('action', 'http://localhost:8000/admin/posts/' + this.dataset.id);
+      baseUrl = 'http://localhost:8000/admin/';
+      if (eleOverlay.querySelector('form').classList.contains('post')) {
+        baseUrl += 'posts/';
+      } else if (eleOverlay.querySelector('form').classList.contains('category')) {
+        baseUrl += 'categories/';
+      }
+      eleOverlay.querySelector('form').setAttribute('action', url + this.dataset.id);
     });
   });
   var eleBtnClose = eleOverlay.querySelector('.btn_close');

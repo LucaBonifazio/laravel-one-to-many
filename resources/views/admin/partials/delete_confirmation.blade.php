@@ -1,5 +1,5 @@
 <div class="overlay d-none">
-    <form class="delete_confirmation" action="" method="POST">
+    <form class="delete_confirmation {{ $delete_name }}" action="" method="POST">
         @method('DELETE')
         @csrf
         <h2>Are you sure?</h2>

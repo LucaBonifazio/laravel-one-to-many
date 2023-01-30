@@ -11,16 +11,16 @@
         </div>
     @endif
 
-    <form method="post" action="{{ route('admin.posts.update', ['post' => $post]) }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('admin.categories.update', ['category' => $category]) }}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title', $post->title) }}">
-            @error('title')
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $category->name) }}">
+            @error('name')
                 <div class="invalid-feedback">
                     <ul>
-                        @foreach ($errors->get('title') as $message)
+                        @foreach ($errors->get('name') as $message)
                             <li>{{ $message }}</li>
                         @endforeach
                     </ul>
@@ -30,7 +30,7 @@
 
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"  value="{{ old('slug', $post->slug) }}">
+            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"  value="{{ old('slug', $category->slug) }}">
             @error('slug')
                 <div class="invalid-feedback">
                     <ul>
@@ -43,53 +43,12 @@
         </div>
 
         <div class="mb-3">
-            <label for="image" class="form-label">URL Image</label>
-            <input type="url" class="form-control @error('image') is-invalid @enderror" id="image" name="image" value="{{ old('image', $post->image) }}">
-            @error('image')
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description"  class="form-control @error('description') is-invalid @enderror" id="description"  cols="30">{{ old('description', $category->description) }}</textarea>
+            @error('description')
                 <div class="invalid-feedback">
                     <ul>
-                        @foreach ($errors->get('image') as $message)
-                            <li>{{ $message }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @enderror
-        </div>
-
-            <div class="mb-3">
-            <label for="uploaded_img" class="form-label">Immagine</label>
-            <input class="form-control @error('uploaded_img') is-invalid @enderror" type="file" id="uploaded_img" name="uploaded_img">
-            <div class="invalid-feedback">
-                @error('uploaded_img')
-                    <ul>
-                        @foreach ($errors->get('uploaded_img') as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                @enderror
-            </div>
-
-            <div class="mb-3">
-            <label for="content" class="form-label">Content</label>
-            <textarea name="content"  class="form-control @error('content') is-invalid @enderror" id="content"  cols="30">{{ old('content', $post->content) }}</textarea>
-            @error('content')
-                <div class="invalid-feedback">
-                    <ul>
-                        @foreach ($errors->get('content') as $message)
-                            <li>{{ $message }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @enderror
-        </div>
-
-        <div class="mb-3">
-            <label for="excerpt" class="form-label">Excerpt</label>
-            <textarea name="excerpt"  class="form-control @error('excerpt') is-invalid @enderror" id="excerpt"  cols="30">{{ old('excerpt', $post->excerpt) }}</textarea>
-            @error('excerpt')
-                <div class="invalid-feedback">
-                    <ul>
-                        @foreach ($errors->get('excerpt') as $message)
+                        @foreach ($errors->get('description') as $message)
                             <li>{{ $message }}</li>
                         @endforeach
                     </ul>
