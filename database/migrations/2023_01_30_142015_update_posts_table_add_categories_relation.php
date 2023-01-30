@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdatePostsTableAddImgColumn extends Migration
+class UpdatePostsTableAddCategoriesRelation extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,12 @@ class UpdatePostsTableAddImgColumn extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('uploaded_img', 100)->nullable()->after('title');
+
+            $table->unsignedBigInteger('category_id')->after('id')->default(1);
+
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories');
         });
     }
 
@@ -26,7 +31,10 @@ class UpdatePostsTableAddImgColumn extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('uploaded_img');
+
+            $table->dropForeign(['category_id']);
+
+            $table->dropColumn('category_id');
         });
     }
 }

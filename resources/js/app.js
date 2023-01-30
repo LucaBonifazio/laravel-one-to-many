@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('bootstrap');
 
 //window.Vue = require('vue');
 
@@ -31,10 +32,7 @@ require('./bootstrap');
 //     el: '#app',
 // });
 
-require('bootstrap');
 
-
-//btn for delete
 const eleOverlay = document.querySelector('.overlay');
 
 if (eleOverlay) {

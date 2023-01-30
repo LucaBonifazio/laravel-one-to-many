@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdatePostsTableAddImgColumn extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class UpdatePostsTableAddImgColumn extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->string('uploaded_img', 100)->nullable()->after('title');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('slug', 100)->unique();
+            $table->string('name', 100);
+            $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class UpdatePostsTableAddImgColumn extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('uploaded_img');
-        });
+        Schema::dropIfExists('categories');
     }
 }
